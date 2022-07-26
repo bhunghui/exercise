@@ -3,17 +3,11 @@ import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> implements Iterable<E> {
     // 虚拟头尾节点
-    final private Node<E> head, tail;
-    private int size;
 
     // 双链表节点
     private static class Node<E> {
-        E val;
-        Node<E> next;
-        Node<E> prev;
 
         Node(E val) {
-            this.val = val;
         }
     }
 
