@@ -14,41 +14,73 @@ public class MyArrayList<E> implements Iterable<E> {
     }
 
     public MyArrayList(int initCapacity) {
-        this.data = new E[initCapacity];
-
+        this.data = (E[]) new Object[initCapacity];
+        size = 0;
     }
 
     // 增
     public void addLast(E e) {
+        checkPositionIndex(size);
+        this.data[size] = e;
+        this.size++;
     }
 
     public void add(int index, E e) {
+        checkPositionIndex(index);
+        System.arraycopy(this.data, index, this.data, index + 1, this.size - index);
+        this.data[index] = e;
+        this.size++;
     }
 
     public void addFirst(E e) {
+        checkPositionIndex(0);
+        System.arraycopy(this.data, 0, this.data, 1, this.size);
+        this.data[0] = e;
+        this.size++;
     }
 
     // 删
     public E removeLast() {
+       checkElementIndex(this.size);
+       E temp = this.data[this.size];
+       this.data[this.size] = null;
+       this.size--;
+       return temp;
     }
 
     public E remove(int index) {
+        checkElementIndex(index);
+        E temp = this.data[index];
+        System.arraycopy(this.data, index + 1, this.data, index, this.size - index - 1);
+        this.size--;
+        return temp;
     }
 
     public E removeFirst() {
+        checkElementIndex(0);
+        E temp = this.data[0];
+        System.arraycopy(this.data, 1, this.data, 0, this.size - 1);
+        this.size--;
+        return temp;
     }
 
     // 查
     public E get(int index) {
+        checkElementIndex(index);
+        return this.data[index];
     }
 
     // 改
     public E set(int index, E element) {
-
+        checkElementIndex(index);
+        E temp = this.data[index];
+        this.data[index] = element;
+        return temp;
     }
 
     // 工具方法
     public int size() {
+        return this.size;
     }
 
     public boolean isEmpty() {
@@ -56,6 +88,9 @@ public class MyArrayList<E> implements Iterable<E> {
 
     // 将 data 的容量改为 newCap
     private void resize(int newCap) {
+        E[] temp = this.data;
+        this.data = (E[]) new Object[newCap];
+        System.arraycopy(temp, 0, this.data, 0 , this.size);
     }
 
     private boolean isElementIndex(int index) {
