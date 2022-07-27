@@ -166,9 +166,6 @@ public class MyArrayList<E> implements Iterable<E> {
 //        arr.addFirst(100);
 //        arr.set(2, 33);
 
-//        for (int i = 0; i < arr.size(); i++) {
-//            System.out.println(arr.get(i));
-//        }
         arr.display();
     }
 
