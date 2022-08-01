@@ -18,7 +18,7 @@ public class quikSort {
         int standard = arr[start];
         int i = start, j = end;
         while (i < j) {
-            while (arr[j] >= standard && i < j) { j--; }
+            while (arr[j] > standard && i < j) { j--; }
             while (arr[i] <= standard && i < j) { i++; }
             if (i != j) {
                 swap(arr, i, j);
