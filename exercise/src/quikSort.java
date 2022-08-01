@@ -17,7 +17,7 @@ public class quikSort {
         if (start > end) {return;}
         int standard = arr[start];
         int i = start, j = end;
-        while (i != j) {
+        while (i < j) {
             while (arr[j] >= standard && i < j) { j--; }
             while (arr[i] <= standard && i < j) { i++; }
             if (i != j) {
@@ -30,6 +30,7 @@ public class quikSort {
         quikSort(arr, start, i - 1);
         quikSort(arr, i + 1, end);
     }
+
     public static void display(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
