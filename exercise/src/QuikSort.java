@@ -9,6 +9,8 @@ public class QuikSort {
         quikSort(arr, 0, arr.length - 1);
         display(arr);
         int[] arr2 = new int[] {31,2,8,1,8,24,7,10,99,0};
+        display(arr2);
+        System.out.println();
         quikSort(arr2, 0 ,arr2.length - 1);
         display(arr2);
     }
